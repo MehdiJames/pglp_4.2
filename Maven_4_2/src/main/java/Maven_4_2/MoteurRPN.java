@@ -152,7 +152,7 @@ package Maven_4_2;
 		 * @throws DivisionParZeroException  DivisionParZeroException
 		 */
 
-		public double calcule(SpecCommand comd) throws OperandeManquantException, DivisionParZeroException
+		public double calcule(SpecCommand specCommand) throws OperandeManquantException, DivisionParZeroException
 		{
 		
 				if (this.stockage.size() >= 2){
@@ -160,7 +160,7 @@ package Maven_4_2;
 					double operande2 = this.stockage.pop(); 
 					this.historique.push(operande1);
 					this.historique.push(operande2);
-					double k=comd.apply(operande1, operande2);
+					double k=specCommand.apply(operande1, operande2);
 					stockage.push(k);
 					return k;
 					
