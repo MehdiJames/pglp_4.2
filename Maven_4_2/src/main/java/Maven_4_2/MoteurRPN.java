@@ -3,6 +3,7 @@ package Maven_4_2;
 
 
 	import java.util.HashMap;
+   
 	import java.util.Map;
 	import java.util.Stack;
 
@@ -20,7 +21,7 @@ package Maven_4_2;
 		public  static final double MIN_VALUE = 0;
 		private Stack<Double> stockage ;
 		private Stack<Double> historique ;
-		private Map<String , SpecifiqueCommande> commandes ;
+		private Map<String , SpecCommand> commandes ;
 		/**
 		 * 
 		 * @param pile stockage 
@@ -28,7 +29,7 @@ package Maven_4_2;
 		 */
 		public MoteurRPN(final Stack<Double> stockage,final Stack<Double> historique) {
 			super(stockage, historique);
-			this.commandes = new HashMap<String,SpecifiqueCommande>();
+			this.commandes = new HashMap <String,SpecCommand>();
 			commandes.put("+", new Addition());
 			commandes.put("*", new Multiplication());
 			commandes.put("-", new Soustraction());
@@ -77,7 +78,7 @@ package Maven_4_2;
 		 * addition
 		 *
 		 */
-		private static class Addition implements SpecifiqueCommande{
+		private static class Addition implements SpecCommand{
 	        public Addition() {
 	         }
 			public double apply(double operande_1, double operande_2) {
@@ -92,7 +93,7 @@ package Maven_4_2;
 		* @author Mehdi
 		*multiplication
 		*/
-		private static class Multiplication implements SpecifiqueCommande{
+		private static class Multiplication implements SpecCommand{
 	       public Multiplication()  {
 	          }
 		public double apply(double operande_1, double operande_2)  {
@@ -107,7 +108,7 @@ package Maven_4_2;
 	   * division
 	   *
 	   */
-	    private class Division implements SpecifiqueCommande {
+	    private class Division implements SpecCommand {
 	       public Division(Stack<Double> stosckage){
 	           }
 	        
@@ -132,7 +133,7 @@ package Maven_4_2;
 		 * soustraction
 		 *
 		 */
-		  private static  class Soustraction implements SpecifiqueCommande{
+		  private static  class Soustraction implements SpecCommand{
 	         public Soustraction() {
 	          }
 			  public double apply(double operande_1, double operande_2) {
@@ -151,7 +152,7 @@ package Maven_4_2;
 		 * @throws DivisionParZeroException  DivisionParZeroException
 		 */
 
-		public double calcule(SpecifiqueCommande comd) throws OperandeManquantException, DivisionParZeroException
+		public double calcule(SpecCommand comd) throws OperandeManquantException, DivisionParZeroException
 		{
 		
 				if (this.stockage.size() >= 2){

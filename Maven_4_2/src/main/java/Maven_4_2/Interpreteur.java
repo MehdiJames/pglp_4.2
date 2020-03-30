@@ -12,7 +12,7 @@ import Exceptions.OperandeManquantException;
  */
 
 public class Interpreteur {
-	  private Map<String , GeneriqueCommande> commandes ;
+	  private Map<String , GenCommand> commandes ;
 
 	/**
 	 * 
@@ -21,7 +21,7 @@ public class Interpreteur {
 	 */
 	public Interpreteur ( final  Stack<Double> stockage , final  Stack<Double> historique )
 	{
-		this.commandes = new HashMap <String , GeneriqueCommande> ();
+		this.commandes = new HashMap <String , GenCommand> ();
 		this.commandes.put("undo", new Undo(stockage, historique));
 		this.commandes.put("exit", new Quit());
 	}
@@ -32,7 +32,7 @@ public class Interpreteur {
 	 * 
 	 */
 	public void traite(String str) throws OperandeManquantException {
-		GeneriqueCommande commande = this.commandes.get(str);
+		GenCommand commande = this.commandes.get(str);
 	    commande.apply();
 		
 	}
@@ -41,7 +41,7 @@ public class Interpreteur {
 	 * @author Mehdi
 	 *quitter 
 	 */
-	     private  static class Quit implements GeneriqueCommande {
+	     private  static class Quit implements GenCommand {
 
 			public void apply() {
 				System.out.println("vous avez quitte l'appli ");
@@ -53,7 +53,7 @@ public class Interpreteur {
 	     * @author Mehdi
 	     *
 	     */
-		private static class Undo implements GeneriqueCommande {
+		private static class Undo implements GenCommand {
 	          private Stack<Double> stockage;
 	          private Stack<Double>  hist;
 			public Undo(final Stack<Double>  stockage, final Stack<Double> hist) {
