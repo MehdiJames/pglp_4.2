@@ -82,15 +82,7 @@ package Maven_4_2;
 			assertEquals(m.calculecommande("-"), -45, 0);
 		}
 		
-		@Test
-		public void testaddition2() throws OperandeTropGrandException, OperandeTropPetitException, OperandeManquantException, DivisionParZeroException{
-			m.ajouterOperande(2);
-			m.ajouterOperande(5);
-			m.ajouterOperande(50);
-			m.ajouterOperande(2);
-			assertEquals(m.calculecommande("+"), 55, 0);
-			
-		}
+		
 		
 		@Test
 		public void testundo() throws OperandeTropGrandException, OperandeTropPetitException, OperandeManquantException, DivisionParZeroException{
